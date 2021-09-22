@@ -55,7 +55,7 @@ export default class IndexPage extends React.Component {
     }).then(stakedBalance => {
         this.setState({lpStaked: stakedBalance})
         return getBalanceLP()
-    }).then( balanceLP => {
+    }).then( balanceWHX => {
       this.setState({lpUnstaked: balanceLP.units})
       return getRewardsStats()
     }).then(info => {
@@ -130,8 +130,8 @@ export default class IndexPage extends React.Component {
 
                 {this.state.currentRewardPerdiod && 
                 <StakeView 
-                  lpUnstaked={lpUnstaked}
-                  lpStaked={lpStaked}
+                  WHXUnstaked={WHXUnstaked}
+                  WhxStaked={WhxStaked}
                   claimableRewards={claimableRewards}
                   rewardsPaid={rewardsPaid} 
                   rewardRate={rewardRate}
