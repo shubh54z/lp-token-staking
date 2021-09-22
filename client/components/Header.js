@@ -7,8 +7,8 @@ import { shortenAccount, getAccount } from "../web3/utils"
 
 import { myWeb3 } from "../web3/provider"
 
-import { getBalance as getBalanceCake, getAllowance as getAllowanceCake } from "../web3/cake_lp"
-import { getBalance as getBalanceETB, getAllowance as getAllowanceETB } from "../web3/etb"
+import { getBalance as getBalanceWHX, getAllowance as getAllowanceTRX } from "../web3/cake_lp"
+import { getBalance as getBalanceWHX, getAllowance as getAllowanceTRX } from "../web3/etb"
 
 
 export default class Header extends React.Component {
@@ -75,9 +75,9 @@ export default class Header extends React.Component {
     }
 
     loadBalance = () => {
-        getBalanceETB().then(data => {
+        getBalanceWHX().then(data => {
             this.setState({
-                balanceETB: data.units
+                balanceWHX: data.units
             })
             return getBalanceCake()
         }).then(data => {
@@ -102,7 +102,7 @@ export default class Header extends React.Component {
 
     render() {
 
-        const { balanceETB, balanceCake } = this.state
+        const { balanceWHX, balanceTRX } = this.state
 
         const blockNumber = this.state && this.state.blockNumber
         const blockDate = this.state && this.state.blockTimestamp && new Date(this.state.blockTimestamp * 1000)
