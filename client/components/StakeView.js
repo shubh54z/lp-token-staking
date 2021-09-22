@@ -24,8 +24,8 @@ export default class StakeView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.lpUnstaked !== this.props.lpUnstaked ||
-      prevProps.lpStaked !== this.props.lpStaked ||
+    if (prevProps.lpUnstaked !== this.props.WHXunstaked ||
+      prevProps.lpStaked !== this.props.WHXStaked ||
 
       prevProps.claimableRewards !== this.props.claimableRewards ||
       prevProps.rewardsPaid  !== this.props.rewardsPaid ||
@@ -37,8 +37,8 @@ export default class StakeView extends React.Component {
       
     ) {
       this.setState({
-        lpUnstaked: this.props.lpUnstaked,
-        lpStaked: this.props.lpStaked,
+        lpUnstaked: this.props.WHXUnstaked,
+        lpStaked: this.props.WHXStaked,
         claimableRewards: this.props.claimableRewards,
         rewardsPaid: this.props.rewardsPaid,
         rewardRate: this.props.rewardRate,
@@ -93,7 +93,7 @@ export default class StakeView extends React.Component {
 
     const { showUpdateStakeModal, formType, lpUnstaked, lpStaked, claimableRewards, rewardsPaid, rewardRate, totalRewardsPaid } = this.state
 
-    const mySharePerc = (lpStaked && this.state.rewardPerdiod.totalStaked > 0) ?  
+    const mySharePerc = (WHXStaked && this.state.rewardPerdiod.totalStaked > 0) ?  
           Math.round(lpStaked  * 10000 / this.state.rewardPerdiod.totalStaked) / 100 : '0'
     
     return (
@@ -101,12 +101,12 @@ export default class StakeView extends React.Component {
 
         <Wrapped>
             <Card style={{flex: 1, minWidth:200, margin: 10 }}>
-              <Card.Title className="p-2">Total LP Tokens Staked</Card.Title>
-              <Card.Body> { this.state.rewardPerdiod.totalStaked } ETB </Card.Body>
+              <Card.Title className="p-2">Total WHX Tokens Staked</Card.Title>
+              <Card.Body> { this.state.rewardPerdiod.totalStaked } TRX </Card.Body>
             </Card>
             <Card style={{flex: 1, minWidth:200, margin: 10 }}>
-              <Card.Title className="p-2">My LP Tokens Staked</Card.Title>
-              <Card.Body> {lpStaked} </Card.Body>
+              <Card.Title className="p-2">Total WHX Tokens Staked</Card.Title>
+              <Card.Body> {WHXStaked} </Card.Body>
             </Card>
             <Card style={{flex: 1, minWidth:200, margin: 10 }}>
               <Card.Title className="p-2">My pool share</Card.Title>
@@ -123,7 +123,7 @@ export default class StakeView extends React.Component {
         
         <Center maxWidth="500">
 
-          <TitleValueBox title="Balance not staked yet" value={lpUnstaked} symbol="Cake-LP" />
+          <TitleValueBox title="Balance not staked yet" value={WHXUnstaked} symbol="WHX" />
 
           <div className="mt-4"></div>
 
@@ -160,7 +160,7 @@ export default class StakeView extends React.Component {
                 handleSuccess={(result) => this.handleSuccess(result)}
                 handleError={(error, message) => this.handleError(error, message)}
                 allowanceUpdated={() => this.handleAllowanceUpdated()}
-                balance={formType == "stake"? this.state.lpUnstaked : formType == "unstake"? this.state.lpStaked : 0}
+                balance={formType == "stake"? this.state.WHXUnstaked : formType == "unstake"? this.state.WHXStaked : 0}
               />
             </Modal>
           )}
