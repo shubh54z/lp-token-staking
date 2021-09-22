@@ -51,7 +51,7 @@ const StakeInfo = ({ ...props }) => {
       <td style={{textAlign:"center"}}> {to} </td>
       { period && <td> {period} </td> }
       <td style={{textAlign:"right"}}> {amount} Cake-LP</td>
-      <td style={{textAlign:"right"}}> { (props.to)? props.rewardPaid : reward } ETB </td>
+      <td style={{textAlign:"right"}}> { (props.to)? props.rewardPaid : reward } TRX </td>
     </tr>
   );
 };
